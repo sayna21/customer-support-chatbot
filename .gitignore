@@ -1,0 +1,10 @@
+# Exclude the local SQLite database
+chatbot.db
+
+# Exclude Python temporary files
+__pycache__/
+*.pyc
+
+# Exclude environment variables and secret keys
+.env
+instance/

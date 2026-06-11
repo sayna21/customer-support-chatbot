@@ -1,0 +1,63 @@
+<!-- templates/admin.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        body {font-family: Arial, sans-serif; padding: 20px;}
+        table{width:100%; border-collapse:collapse; margin-top:20px;}
+        th, td{border:1px solid #ddd; padding:8px; text-align:left;}
+        th{background-color: #000000; color:white;}
+    </style>
+</head>
+<body style="display:block;  max-width:800px; margin:auto;">
+    <h2>Admin Dashboard - Chatbot Management</h2>
+    <div style="background: #f4f7f6; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #000000;">
+        <h3>Analytics Overview</h3>
+        <p>Total Customer Interactions: <strong>{{total_chats}}</strong></p>
+        <p>Response Success Rate: <strong>{{success_rate}}</strong></p>
+        <p>Top Trending Questions:</p>
+        <ul>
+            {% for item in most_asked %}
+            <li>"{{item['message']}}" (Asked {{item['count']}} times)</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h3>Add New FAQ</h3>
+    <form action="/add_faq" method="POST">
+        <input type="text" name="question" placeholder="Question" required>
+        <input type="text" name="answer" placeholder="Answer" required>
+        <button type="submit">Add FAQ</button>
+    </form>
+
+    <h3>Current FAQs</h3>
+    <table>
+        <tr><th>ID</th><th>Question</th><th>Answer</th><th>Actions</th></tr>
+        {% for item in faqs %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ item['question'] }}</td>
+            <td>{{ item['answer'] }}</td>
+            <td>
+    <a href="/edit_faq/{{ item['faq_id'] }}" style="color: green; text-decoration: none; font-weight: bold;">Edit</a> |
+    <a href="/delete_faq/{{ item['faq_id'] }}" style="color: red; text-decoration: none; font-weight: bold;">Delete</a>
+</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Recent Chat Logs</h3>
+    <table>
+        <tr><th>Time</th><th>User Message</th><th>Bot Response</th></tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log['timestamp'] }}</td>
+            <td>{{ log['message'] }}</td>
+            <td>{{ log['response'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; background:#f4f7f6;">
+    <div class="chat-container" style="width:350px; padding:30px; text-align:center;">
+        <h2 style="color:#007bff;">Admin Portal</h2>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Admin Email" required style="width:100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+            <button type="submit" style="background: #007bff; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer; font-weight: bold;">Login</button>
+        </form>
+    </div>
+</body>
+</html>

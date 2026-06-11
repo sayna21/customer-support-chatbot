@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit FAQ</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body style="display:flex; justify-content:center; padding:50px;">
+    <div class="chat-container" style="padding:20px;">
+        <h2>Edit FAQ</h2>
+        <form action="/update_faq/{{faq['faq_id']}}" method="POST">
+            <label>Question:</label><br>
+            <input type="text" name="question" value="{{faq['question']}}" style="width:100%; padding:8px; margin:10px 0;"></br>
+            <label>Answer:</label><br>
+            <textarea name="answer" style="width:100%; padding:8px; height:100px;">{{faq['answer']}}</textarea><br><br>
+            <button type="submit" style="background:#007bff; color:white; padding:10px, border:none; cursor:pointer; width:100%;">Save Changes</button>
+        </form>
+        <br>
+        <a href="/admin">Cancel and Go Back</a>
+    </div>
+</body>
+</html>
