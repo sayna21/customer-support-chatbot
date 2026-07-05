@@ -3,8 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import nltk
 from nltk.tokenize import word_tokenize
-nltk.download('punkt')
-nltk.download('punkt_tab')
 app=Flask(__name__)
 app.secret_key='super_secret_key_for_this_internship_project'
 def get_db_connection():
